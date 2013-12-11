@@ -7,7 +7,9 @@ class CitiesController < ApplicationController
     neo = Neography::Rest.new
     r = neo.execute_query("START n=node(*) RETURN n;")
     r["data"].shift # first node is wacky
-    @cities = r["data"].map { |node| OpenStruct.new(node[0]["data"]) }
+    @cities = r["data"].map { |node|
+      OpenStruct.new(node[0]["data"].merge(id: node[0]["self"].match(/node\/(\d+)$/)[1].to_i))
+    }
   end
 
   # GET /cities/1

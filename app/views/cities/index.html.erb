@@ -21,3 +21,18 @@
 <br>
 
 <%= link_to 'New City', new_city_path %>
+
+<br>
+
+<%= form_for :relationship, url: relationships_path do |f| %>
+  <%= f.label :city_a %>
+  <%= f.select :city_a, options_for_select(@cities.map {|c| [c.name, c.id] }) %>
+
+  <%= f.label :city_b %>
+  <%= f.select :city_b, options_for_select(@cities.map {|c| [c.name, c.id] }) %>
+
+  <%= f.label :distance %>
+  <%= f.text_field :distance %>
+
+  <%= f.submit %>
+<% end %>

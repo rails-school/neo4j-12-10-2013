@@ -1,0 +1,7 @@
+<h1>All relationships</h1>
+
+<ul>
+  <% @roads.each do |road| %>
+    <li>From <%= @cities.find {|city| city.id == road.start }.name %> to <%= @cities.find {|city| city.id == road.end }.name %>: <%= road.length %> miles</li>
+  <% end %>
+</ul>

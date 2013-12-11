@@ -1,5 +1,6 @@
 Neo::Application.routes.draw do
   resources :cities
+  resources :relationships
 
   root "cities#index"
 
